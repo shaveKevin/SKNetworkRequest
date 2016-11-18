@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "SKNetworkRequest"
-  s.version      = "0.0.5"
+  s.version      = "0.0.6"
   s.summary      = "A network  based on  AFNetworking 3.x+"
   s.description  = <<-DESC
                    网络通用
@@ -14,6 +14,8 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.source_files = 'SKNetworkRequest/**/*.{h,m}'
   s.public_header_files = 'SKNetworkRequest/**/*.{h}'
-  s.source       = { :git => "https://github.com/shaveKevin/SKNetworkRequest.git", :tag => "0.0.5" }
+  s.source       = { :git => "https://github.com/shaveKevin/SKNetworkRequest.git", :tag => "0.0.6" }
   s.dependency 'AFNetworking', '~> 3.1.0'
+  s.frameworks = 'Foundation'
+
 end
