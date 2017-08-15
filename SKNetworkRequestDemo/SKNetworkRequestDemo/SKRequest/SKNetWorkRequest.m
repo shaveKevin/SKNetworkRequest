@@ -12,8 +12,8 @@
 @implementation SKNetWorkRequest
 
 - (instancetype)init {
-    if(self = [super init])
-    {
+    
+    if(self = [super init]) {
         self.arrayData = [[NSMutableArray alloc] initWithCapacity:0];
         self.ignoreCache = YES;
     }
@@ -24,13 +24,11 @@
     [super start];
 }
 
-- (NSString *)baseUrl
-{
+- (NSString *)baseUrl {
     return nil;
 }
 
-- (NSString *)cdnUrl
-{
+- (NSString *)cdnUrl {
     return nil;
 }
 

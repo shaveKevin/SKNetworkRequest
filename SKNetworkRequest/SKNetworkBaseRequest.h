@@ -129,11 +129,11 @@ typedef void (^AFConstructingBlock)(id<AFMultipartFormData> formData);
 - (BOOL)isExecuting;
 
 /// block回调
-- (void)startCompletionBlockWithProgress:(void (^)(NSProgress *))progress
+- (void)startCompletionBlockWithProgress:(void (^)(NSProgress *progress))progress
                                  success:(void (^)(SKNetworkBaseRequest *request))success
                                  failure:(void (^)(SKNetworkBaseRequest *request))failure;
 /// 设置回调block
-- (void)setCompletionBlockWithProgress:(void (^)(NSProgress *))progress
+- (void)setCompletionBlockWithProgress:(void (^)(NSProgress *progress))progress
                                success:(void (^)(SKNetworkBaseRequest *request))success
                                failure:(void (^)(SKNetworkBaseRequest *request))failure;
 /// 把block置nil来打破循环引用

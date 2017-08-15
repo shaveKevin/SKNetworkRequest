@@ -105,14 +105,14 @@
     return self.task.state == NSURLSessionTaskStateRunning;
 }
 
-- (void)startCompletionBlockWithProgress:(void (^)(NSProgress * progress))progress
+- (void)startCompletionBlockWithProgress:(void (^)(NSProgress *progress))progress
                                  success:(void (^)(SKNetworkBaseRequest *request))success
                                  failure:(void (^)(SKNetworkBaseRequest *request))failure {
     [self setCompletionBlockWithProgress:progress success:success failure:failure];
     [self start];
 }
 
-- (void)setCompletionBlockWithProgress:(void (^)(NSProgress *))progress
+- (void)setCompletionBlockWithProgress:(void (^)(NSProgress *progress))progress
                                success:(void (^)(SKNetworkBaseRequest *request))success
                                failure:(void (^)(SKNetworkBaseRequest *request))failure {
     self.progressBlock = progress;
