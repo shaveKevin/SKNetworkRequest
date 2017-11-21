@@ -11,6 +11,12 @@
 #import "SKStaticNewsListModel.h"
 #import "SKStaticNewsListResult.h"
 #import "SKNetworkBatchRequest.h"
+#import "SKUserinfoRequest.h"
+#import "SKUserinfoResult.h"
+#import "SKUserInfoModel.h"
+#import <Masonry.h>
+#import "NSString+realm.h"
+
 @interface ViewController ()
 
 /**
@@ -32,6 +38,8 @@
  *  @brief group request .
  */
 @property(nonatomic,strong)SKNetworkBatchRequest *batchRequest;
+
+@property (nonatomic, strong) SKUserinfoRequest *userinfoRequest;
 
 @end
 
@@ -59,7 +67,8 @@
     //[self getNewsListData];
     
     ///  同步  .
-    [self getBatchRequest];
+//    [self getBatchRequest];
+    [self pressAction:nil];
 }
 
 /**
@@ -119,8 +128,8 @@
         //
     }];
     
-    
 }
+
 - (void)getNewsListGroupData {
     if (_newsListRequest) {
         [_newsListRequest stop];
@@ -134,6 +143,7 @@
     [_batchRequest addRequest:_newsListRequest successCallback:^(SKNetworkBaseRequest *baseRequest) {
         //
         //
+        
         SKStaticNewsList_request *reviewRequest = (SKStaticNewsList_request*)baseRequest;
         SKStaticNewsListResult *result = (SKStaticNewsListResult *)reviewRequest.result;
         NSLog(@"----请求 1-----%ld",result.arrayList.count);
@@ -144,6 +154,7 @@
     
     
 }
+
 - (void)getNewsGroupListData {
     if (_newsListGroupRequest) {
         [_newsListGroupRequest stop];
@@ -165,4 +176,114 @@
     }];
     
 }
+
+- (void)pressAction:(UIButton *)sender {
+    if (self.userinfoRequest) {
+        [self.userinfoRequest stop];
+        self.userinfoRequest = nil;
+    }
+    [self.userinfoRequest startCompletionBlockWithProgress:^(NSProgress *progress) {
+        //
+    } success:^(SKNetworkBaseRequest *request) {
+        //
+        SKUserinfoResult *result =  self.userinfoRequest.uerInfoResult;
+        if (result.dataList&& result.dataList.count) {
+            SKUserInfoModel *model = [result.dataList firstObject];
+            RLMRealm * realm = [RLMRealm realmWithURL:[NSURL URLWithString:[NSString getRealmURL]]];
+            //查询所有
+            RLMResults * userInfoModelArr = [SKUserInfoModel allObjectsInRealm:realm];
+            NSLog(@" =查询出来的userInfoModelArr == %@",userInfoModelArr);
+            //update
+            if (userInfoModelArr&&userInfoModelArr.count) {
+                SKUserInfoModel *userInfoModel = userInfoModelArr.firstObject;
+                [realm beginWriteTransaction];
+                userInfoModel.sex = @"女";
+                [realm commitWriteTransaction];
+                RLMResults * userInfoModel1 = [SKUserInfoModel allObjectsInRealm:realm];
+                NSLog(@" =更改后userInfoModel== %@",userInfoModel1.firstObject);
+                
+            }else{
+                //create
+                [realm beginWriteTransaction];
+                [SKUserInfoModel createOrUpdateInRealm:realm withValue:model];
+                [realm commitWriteTransaction];
+                RLMResults * userInfoModel = [SKUserInfoModel allObjectsInRealm:realm];
+                NSLog(@" =创建后userInfoModel== %@",userInfoModel.firstObject);
+
+            }
+
+        }
+        
+    } failure:^(SKNetworkBaseRequest *request) {
+        //
+    }];
+}
+
+- (void)deleteUserInfoDataBase {
+    RLMRealm * realm = [RLMRealm realmWithURL:[NSURL URLWithString:[NSString getRealmURL]]];
+    //查询所有
+    RLMResults * presons = [SKUserInfoModel allObjectsInRealm:realm];
+    //    NSLog(@" === %@",presons);
+    if (presons && presons.count) {
+        SKUserInfoModel *result1 = [presons firstObject];
+        // 删除某一条数据
+        if ([result1.customerId isEqualToString:@"1111111000000000"]) {
+            NSLog(@"%@",result1);
+            [realm transactionWithBlock:^{
+                [realm deleteObject:result1];
+            }];
+        }
+    }
+}
+
+//清除一次数据库
+- (void)cleanRealm{
+    
+    NSFileManager *manager = [NSFileManager defaultManager];
+    RLMRealmConfiguration *config = [RLMRealmConfiguration defaultConfiguration];
+    NSArray<NSURL *> *realmFileURLs = @[
+                                        config.fileURL,
+                                        [config.fileURL URLByAppendingPathExtension:@"lock"],
+                                        [config.fileURL URLByAppendingPathExtension:@"management"],
+                                        ];
+    for (NSURL *URL in realmFileURLs) {
+        NSError *error = nil;
+        [manager removeItemAtURL:URL error:&error];
+        if (error) {
+            NSLog(@"clean realm error:%@", error);
+        }else{
+            NSLog(@"清楚成功");
+        }
+    }
+    
+    RLMRealm * realm = [RLMRealm realmWithURL:[NSURL URLWithString:[NSString getRealmURL]]];
+    [realm transactionWithBlock:^{
+        [realm deleteAllObjects];
+    }];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+}
+
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+// - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//
+//     if ([[segue identifier]isEqualToString:@"DetailViewController"]) {
+//         statements
+//     }
+// }
+
+- (SKUserinfoRequest *)userinfoRequest {
+    if (!_userinfoRequest) {
+        _userinfoRequest = [[SKUserinfoRequest alloc]init];
+    }
+    return _userinfoRequest;
+    
+}
+
+
+
 @end

@@ -12,28 +12,7 @@
 
 /// 解析所有json数据
 + (instancetype)parseTotalJson:(NSDictionary *)jsDic{
-    /*
-    NSDictionary * responseData = jsDic[@"responseData"];
-    SKResult * result = [[self class] parseSubJson:responseData];
-    
-    if(!result) {
-        result = [SKResult new];
-    }
-    
-    NSString * responseMessage = jsDic[@"responseMessage"];
-    result.responseMessage = responseMessage;
-    
-    NSString * responseCode = jsDic[@"responseCode"];
-    result.responseCode = responseCode;
-    
-    NSNumber * responseStatus = jsDic[@"responseStatus"];
-    result.responseStatus = responseStatus;
-    
-    NSNumber * responsePk = jsDic[@"responsePk"];
-    result.responsePk = responsePk;
-    
-    return result;
-     */
+
     NSDictionary *responseData = jsDic[@"root"];
     SKResult *result = [[self class] parseSubJson:responseData];
     if(!result) {
