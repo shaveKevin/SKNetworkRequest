@@ -19,10 +19,6 @@
 		2CDD00961FC3D68500D7EA6D /* SKUserinfoRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD00951FC3D68500D7EA6D /* SKUserinfoRequest.m */; };
 		2CDD00991FC3DC2C00D7EA6D /* SKUserinfoResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD00981FC3DC2C00D7EA6D /* SKUserinfoResult.m */; };
 		2CDD009C1FC40B9B00D7EA6D /* NSString+realm.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD009B1FC40B9B00D7EA6D /* NSString+realm.m */; };
-		2CF97D661DDDB7CB0022729B /* SKNetworkAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF97D5F1DDDB7CB0022729B /* SKNetworkAgent.m */; };
-		2CF97D671DDDB7CB0022729B /* SKNetworkBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF97D611DDDB7CB0022729B /* SKNetworkBaseRequest.m */; };
-		2CF97D681DDDB7CB0022729B /* SKNetworkBatchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF97D631DDDB7CB0022729B /* SKNetworkBatchRequest.m */; };
-		2CF97D691DDDB7CB0022729B /* SKNetworkBatchRequestAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF97D651DDDB7CB0022729B /* SKNetworkBatchRequestAgent.m */; };
 		2CF97D7A1DDDB8280022729B /* SKResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF97D6D1DDDB8280022729B /* SKResult.m */; };
 		2CF97D7B1DDDB8280022729B /* SKStaticNewsList_request.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF97D701DDDB8280022729B /* SKStaticNewsList_request.m */; };
 		2CF97D7C1DDDB8280022729B /* SKStaticNewsList.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF97D721DDDB8280022729B /* SKStaticNewsList.m */; };
@@ -55,15 +51,6 @@
 		2CDD00981FC3DC2C00D7EA6D /* SKUserinfoResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKUserinfoResult.m; sourceTree = "<group>"; };
 		2CDD009A1FC40B9B00D7EA6D /* NSString+realm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+realm.h"; sourceTree = "<group>"; };
 		2CDD009B1FC40B9B00D7EA6D /* NSString+realm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+realm.m"; sourceTree = "<group>"; };
-		2CF97D5D1DDDB7CB0022729B /* SKNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKNetwork.h; sourceTree = "<group>"; };
-		2CF97D5E1DDDB7CB0022729B /* SKNetworkAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKNetworkAgent.h; sourceTree = "<group>"; };
-		2CF97D5F1DDDB7CB0022729B /* SKNetworkAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKNetworkAgent.m; sourceTree = "<group>"; };
-		2CF97D601DDDB7CB0022729B /* SKNetworkBaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKNetworkBaseRequest.h; sourceTree = "<group>"; };
-		2CF97D611DDDB7CB0022729B /* SKNetworkBaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKNetworkBaseRequest.m; sourceTree = "<group>"; };
-		2CF97D621DDDB7CB0022729B /* SKNetworkBatchRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKNetworkBatchRequest.h; sourceTree = "<group>"; };
-		2CF97D631DDDB7CB0022729B /* SKNetworkBatchRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKNetworkBatchRequest.m; sourceTree = "<group>"; };
-		2CF97D641DDDB7CB0022729B /* SKNetworkBatchRequestAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKNetworkBatchRequestAgent.h; sourceTree = "<group>"; };
-		2CF97D651DDDB7CB0022729B /* SKNetworkBatchRequestAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKNetworkBatchRequestAgent.m; sourceTree = "<group>"; };
 		2CF97D6C1DDDB8280022729B /* SKResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKResult.h; sourceTree = "<group>"; };
 		2CF97D6D1DDDB8280022729B /* SKResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKResult.m; sourceTree = "<group>"; };
 		2CF97D6F1DDDB8280022729B /* SKStaticNewsList_request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKStaticNewsList_request.h; sourceTree = "<group>"; };
@@ -125,7 +112,6 @@
 			children = (
 				2CF97D6A1DDDB8280022729B /* Model */,
 				2CF97D771DDDB8280022729B /* SKRequest */,
-				2CF97D5C1DDDB7CB0022729B /* SKNetworkRequest */,
 				2CB524771DDD9D2800851403 /* AppDelegate.h */,
 				2CB524781DDD9D2800851403 /* AppDelegate.m */,
 				2CB5247A1DDD9D2800851403 /* ViewController.h */,
@@ -147,22 +133,6 @@
 				2CB524751DDD9D2800851403 /* main.m */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		2CF97D5C1DDDB7CB0022729B /* SKNetworkRequest */ = {
-			isa = PBXGroup;
-			children = (
-				2CF97D5D1DDDB7CB0022729B /* SKNetwork.h */,
-				2CF97D5E1DDDB7CB0022729B /* SKNetworkAgent.h */,
-				2CF97D5F1DDDB7CB0022729B /* SKNetworkAgent.m */,
-				2CF97D601DDDB7CB0022729B /* SKNetworkBaseRequest.h */,
-				2CF97D611DDDB7CB0022729B /* SKNetworkBaseRequest.m */,
-				2CF97D621DDDB7CB0022729B /* SKNetworkBatchRequest.h */,
-				2CF97D631DDDB7CB0022729B /* SKNetworkBatchRequest.m */,
-				2CF97D641DDDB7CB0022729B /* SKNetworkBatchRequestAgent.h */,
-				2CF97D651DDDB7CB0022729B /* SKNetworkBatchRequestAgent.m */,
-			);
-			path = SKNetworkRequest;
 			sourceTree = "<group>";
 		};
 		2CF97D6A1DDDB8280022729B /* Model */ = {
@@ -317,13 +287,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SKNetworkRequestDemo-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E2B141A8AA81C2FA50A85AF6 /* [CP] Embed Pods Frameworks */ = {
@@ -355,16 +328,12 @@
 				2CB524791DDD9D2800851403 /* AppDelegate.m in Sources */,
 				2CF97D7A1DDDB8280022729B /* SKResult.m in Sources */,
 				2CDD00931FC3D52B00D7EA6D /* SKUserInfoModel.m in Sources */,
-				2CF97D661DDDB7CB0022729B /* SKNetworkAgent.m in Sources */,
 				2CF97D7B1DDDB8280022729B /* SKStaticNewsList_request.m in Sources */,
-				2CF97D671DDDB7CB0022729B /* SKNetworkBaseRequest.m in Sources */,
 				2CF97D7D1DDDB8280022729B /* SKStaticNewsListModel.m in Sources */,
 				2CDD00901FC3C6B200D7EA6D /* SKRealmResult.m in Sources */,
 				2CDD00961FC3D68500D7EA6D /* SKUserinfoRequest.m in Sources */,
 				2CB524761DDD9D2800851403 /* main.m in Sources */,
-				2CF97D681DDDB7CB0022729B /* SKNetworkBatchRequest.m in Sources */,
 				2CDD009C1FC40B9B00D7EA6D /* NSString+realm.m in Sources */,
-				2CF97D691DDDB7CB0022729B /* SKNetworkBatchRequestAgent.m in Sources */,
 				2C515ACB1FC2CC9B00D57EFF /* DetailViewController.m in Sources */,
 				2CDD00991FC3DC2C00D7EA6D /* SKUserinfoResult.m in Sources */,
 			);
