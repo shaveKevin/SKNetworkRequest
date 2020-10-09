@@ -120,6 +120,7 @@
     if (method == SKRequestMethodGet) {
         request.task = [_manager GET:url
                           parameters:param
+                             headers:nil
                             progress:^(NSProgress * _Nonnull progress) {
                                 [self handleRequestProgress:progress request:request];
                             }
@@ -131,26 +132,25 @@
                                  request.error = error;
                                  [self handleRequestResult:task];
                              }];
-    }
+            }
     else if (method == SKRequestMethodPost) {
         if (constructingBlock != nil) {
-            request.task = [_manager POST:url
-                               parameters:param
-                constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {}
-                                 progress:^(NSProgress * _Nonnull uploadProgress) {
-                                     [self handleRequestProgress:uploadProgress request:request];
-                                 }
-                                  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                      request.responseObject = responseObject;
-                                      [self handleRequestResult:task];
-                                  }
-                                  failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                      request.error = error;
-                                      [self handleRequestResult:task];
-                                  }];
+            request.task = [_manager POST:url parameters:param headers:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+                
+            } progress:^(NSProgress * _Nonnull uploadProgress) {
+                [self handleRequestProgress:uploadProgress request:request];
+
+            } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                request.responseObject = responseObject;
+                [self handleRequestResult:task];
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                request.error = error;
+                [self handleRequestResult:task];
+            }];
         }
         else {
             request.task = [_manager POST:url parameters:param
+                                  headers:nil
                                  progress:^(NSProgress * _Nonnull uploadProgress) {
                                      [self handleRequestProgress:uploadProgress request:request];
                                  }
@@ -165,16 +165,13 @@
         }
     }
     else if (method == SKRequestMethodPut) {
-        request.task = [_manager PUT:url
-                          parameters:param
-                             success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                 request.responseObject = responseObject;
-                                 [self handleRequestResult:task];
-                             }
-                             failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                 request.error = error;
-                                 [self handleRequestResult:task];
-                             }];
+        request.task = [_manager PUT:url parameters:param headers:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            request.responseObject = responseObject;
+            [self handleRequestResult:task];
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            request.error = error;
+            [self handleRequestResult:task];
+        }];
     }
     else {
         return;
